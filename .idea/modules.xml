@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/OGP.iml" filepath="$PROJECT_DIR$/.idea/OGP.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Oefenzitting1/Oefenzitting1.iml" filepath="$PROJECT_DIR$/Oefenzitting1/Oefenzitting1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Test/Test.iml" filepath="$PROJECT_DIR$/Test/Test.iml" />
+    </modules>
+  </component>
+</project>
