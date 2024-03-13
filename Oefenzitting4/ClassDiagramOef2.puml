@@ -1,22 +1,22 @@
 @startuml
 
 abstract StackOfCards{
-+capacity: int
-+stackOfCards: Stack<Cards>
+    + capacity: int
+    + stackOfCards: Stack<Cards>
 
-+Stack(int maxCards)
+    + Stack(int maxCards)
 
-+fromMoveTo(StackOfCards stackOfCards): void
-+add(Card card): void
-+pop(): Card
-+getCapacity(): int
-+getSize(): int
-+printAllCards(): List
+    + fromMoveTo(StackOfCards stackOfCards): void
+    + add(Card card): void
+    + pop(): Card
+    + getCapacity(): int
+    + getSize(): int
+    + printAllCards(): List
 }
 
 class GoalStack{
 
-+peek(): Card
+    + peek(): Card
 }
 
 class HelpStack{
@@ -24,15 +24,15 @@ class HelpStack{
 
 class SourceStack{
 
-+peek(): Card
+    + peek(): Card
 }
 
 'Cards are immutable
 class Cards{
-+value: int (static)
-+kind: String (static)
+    + {static} value: int
+    + {static} kind: String
 
-+canPutCardOn(Card card): boolean
+    + canPutCardOn(Card card): boolean
 }
 
 StackOfCards <|-- GoalStack

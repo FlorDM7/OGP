@@ -1,0 +1,88 @@
+@startuml
+
+package filesystem {
+    class File {
+        - writeable: boolean
+        - size: int
+        - {static} MAX_SIZE: int
+
+        - {static} EXTENSION: Extension
+
+        + File(dir: Directory, name: String, size:int, writable:boolean, type:Extension)
+        + File(dir: Directory, name: String, type:Extension)
+
+        + canHaveAsSize(size: int): boolean
+        + enlarge(amountOfBits: int): void
+        + shorten(amountOfBits: int): void
+        + isWriteable(): boolean
+
+        + getSize(): int
+        + setSize(size: int): void
+        + setWriteable(writeable: boolean): void
+    }
+
+    enum Extension {
+        TXT
+        PDF
+        JAVA
+    }
+
+    class Link{
+        + {static} linkedItem: Item
+
+        + Link(dir: Directory, name: String, linkedItem: Item)
+    }
+
+    class Directory {
+        - writeable: boolean
+        - items: List<Items>
+
+        + Directory(dir: Directory, name: String, writable: boolean)
+        + Directory(dir: Directory, name: String)
+        + Directory(name: String, writable: boolean)
+        + Directory(name: String)
+
+        + isWriteable(): boolean
+
+        + getNbItems(): int
+        + getItemAt(index: int): Item
+        + getItem(name: String): Item
+        + containsDiskWithName(name: String): boolean
+        + getIndexOf(item: Item): int
+        + hasAsItem(item: Item): boolean
+
+        + makeRoot(): void
+    }
+
+    abstract Item {
+        + name: String
+        - creationTime: Date
+        - modificationTime: Date
+
+        + getName(): String
+        - setName(name: String): void
+        + changeName(newName: String): void
+        + terminate(): void
+        + getCreationTime(): Date
+        + getModificationTime(): Date
+        - setModificationTime(modificationTime: Date): void
+        + hasOverlappingUsagePeriod(other: File): boolean
+
+        + move(dir: Directory): void
+        + getRoot(): Directory
+        + isDirectOrIndirectChildOf(dir: Directory): boolean
+        + getTotalDiskUsage(): int
+        + getAbsolutePath(): String
+        + deleteRecursive(): void
+    }
+}
+
+Directory -- Item : contains
+Link --> Directory
+Link -->  File
+Extension -o File: uses
+Item <|-- File : inherits from
+Item <|-- Directory : inherits from
+Item <|-- Link : inherits from
+
+@enduml
