@@ -1,0 +1,59 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+'abstract class AbstractList
+'abstract AbstractCollection
+'interface List
+'interface Collection
+
+'List <|-- AbstractList
+'Collection <|-- AbstractCollection
+
+'Collection <|- List
+'AbstractCollection <|- AbstractList
+'AbstractList <|-- ArrayList
+
+'class ArrayList {
+'Object[] elementData
+'size()
+'}
+
+'enum TimeUnit {
+'DAYS
+'HOURS
+'MINUTES
+'}
+
+class Wallet{
++list: Array[Stocks]
++owner: String
+
++checkIfAtLeastOneStockBought(String company): boolean
+}
+
+class Stocks{
++orders: Array[Order]
++currentPrice: int
++company: String
+
++getCurrentPrice(): int
+}
+
+class Order{
++totalAmount: int
++remainingAmount: int
++maximumPrice: int
++isBought: boolean
++productName: String
+
++Order(int amount, int maximumPrice): void
++isBought(): boolean
++setMaximumPrice(): void
++buy(int amount): void
++resign(): void
+}
+
+Wallet <-- Stocks
+Stocks <-- Order
+
+@enduml
