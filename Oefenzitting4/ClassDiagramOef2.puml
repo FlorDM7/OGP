@@ -1,0 +1,43 @@
+@startuml
+
+abstract StackOfCards{
++capacity: int
++stackOfCards: Stack<Cards>
+
++Stack(int maxCards)
+
++fromMoveTo(StackOfCards stackOfCards): void
++add(Card card): void
++pop(): Card
++getCapacity(): int
++getSize(): int
++printAllCards(): List
+}
+
+class GoalStack{
+
++peek(): Card
+}
+
+class HelpStack{
+}
+
+class SourceStack{
+
++peek(): Card
+}
+
+'Cards are immutable
+class Cards{
++value: int (static)
++kind: String (static)
+
++canPutCardOn(Card card): boolean
+}
+
+StackOfCards <|-- GoalStack
+StackOfCards <|-- SourceStack
+StackOfCards <|-- HelpStack
+StackOfCards "*" - "1" Cards
+
+@enduml

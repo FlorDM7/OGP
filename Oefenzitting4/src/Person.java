@@ -52,7 +52,7 @@ public class Person {
                 amount += ((Dog) dog).getFoodPerDay();
             }
         }
-        return amount;
+        return amount*days;
     }
 
     @Basic

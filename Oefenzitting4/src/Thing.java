@@ -24,7 +24,10 @@ public class Thing {
     /**
      * General constructor for a thing. When a thing is created it is assigned to a person.
      */
-    public Thing(int value, Person owner) {
+    public Thing(int value, Person owner) throws IllegalValueException {
+        if (value < 0){
+            throw new IllegalValueException(this);
+        }
         this.value = value;
         this.owner = owner;
         owner.addThingToList(this);
@@ -50,7 +53,8 @@ public class Thing {
      */
     @Basic @Raw
     public void setOwner(Person owner) {
-        owner.removeThing(this);
+        getOwner().removeThing(this);
         this.owner = owner;
+        owner.addThingToList(this);
     }
 }

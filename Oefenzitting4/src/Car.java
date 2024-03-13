@@ -40,7 +40,7 @@ public class Car extends Thing{
     }
 
     /**
-     * As the car gets older the value of the car decreases so we override the getter for the value.
+     * As the car gets older the value of the car decreases, so we override the getter for the value.
      */
     @Override
     public int getValue(){
