@@ -1,9 +1,10 @@
 import be.kuleuven.cs.som.annotate.Basic;
-
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * A class that represents person who can own animals or things.
+ * @author Flor De Meulemeester
  */
 public class Person {
 
@@ -14,15 +15,21 @@ public class Person {
 
     /**
      * A list with the things that the person owns.
+     * We make one list with all things so that we can easily extend the program.
      */
     public List<Thing> things;
 
+    /**
+     * A constructor
+     */
     public Person(String name) {
         this.name = name;
+        this.things = new ArrayList<Thing>();
     }
 
     /**
      * A method to get the total value of all the dogs and the paintings that a person owns.
+     * @return total
      */
     public int totalValue(){
         int total = 0;
@@ -36,6 +43,7 @@ public class Person {
     /**
      * A method to calculate the minimum amount of dog that a person should buy
      * for a certain amount of days so that his/her dogs don't die.
+     * @return amount
      */
     public int minimumDogFood(int days){
         int amount = 0;
@@ -59,6 +67,7 @@ public class Person {
 
     /**
      * This method allows us to check if a person has a certain painting of a certain painter.
+     * @return boolean
      */
     public boolean hasPaintingOf(String painter){
         for (Thing painting : things){
@@ -70,6 +79,9 @@ public class Person {
         return false;
     }
 
+    /**
+     * This method removes a thing for the list.
+     */
     public void removeThing(Thing thing){
         things.remove(thing);
     }
@@ -88,15 +100,23 @@ public class Person {
      * Returns the car with the biggest cylinder capacity that a person owns.
      */
     public Car biggestCar(){
-        Car maximum = null;
+        Person dummy = new Person("dummy");
+        Car maximum = new Car(0,dummy,0);
         for (Thing car: things){
             if (car instanceof Car){
-                if (((Car) car).getCylinderCapacity() > maximum.getCylinderCapacity()){
+                if (((Car) car).getCylinderCapacity() > maximum.getCylinderCapacity()) {
                     maximum = (Car) car;
                 }
             }
         }
         return maximum;
+    }
+
+    /**
+     * Adds an item to the list of things.
+     */
+    public void addThingToList(Thing thing){
+        things.add(thing);
     }
 
 }

@@ -1,0 +1,28 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Person{
++String name
++List<Things> things
+}
+
+abstract Thing{
++int value
++Person owner
+}
+
+class Dog{
+}
+
+class Painting{
+}
+
+class Car{
+}
+
+Thing <|-- Dog
+Thing <|-- Painting
+Thing <|-- Car
+Thing <-> Person
+
+@enduml

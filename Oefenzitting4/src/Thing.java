@@ -1,7 +1,13 @@
 import be.kuleuven.cs.som.annotate.Basic;
+import be.kuleuven.cs.som.annotate.Raw;
 
 /**
  * A more abstract class representing things that a person could own.
+ * @author Flor De Meulemeester
+ * @invar A value must always be positive.
+ *        | value > 0
+ * @invar A thing is always assigned to one person.
+ *        | owner != null
  */
 public class Thing {
 
@@ -15,9 +21,13 @@ public class Thing {
      */
     public Person owner;
 
+    /**
+     * General constructor for a thing. When a thing is created it is assigned to a person.
+     */
     public Thing(int value, Person owner) {
         this.value = value;
         this.owner = owner;
+        owner.addThingToList(this);
     }
 
     @Basic
@@ -36,9 +46,9 @@ public class Thing {
     }
 
     /**
-     * Sets a new owner by remove the thing for the properties of the old owner.
+     * Sets a new owner by removing the thing for the properties of the old owner.
      */
-    @Basic
+    @Basic @Raw
     public void setOwner(Person owner) {
         owner.removeThing(this);
         this.owner = owner;

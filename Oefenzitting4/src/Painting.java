@@ -1,5 +1,9 @@
 import be.kuleuven.cs.som.annotate.Basic;
 
+/**
+ * A class representing paintings. Each painting can have a title and a painter.
+ * @author Flor De Meulemeester
+ */
 public class Painting extends Thing{
 
     /**

@@ -1,6 +1,10 @@
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
+/**
+ * A class representing cars.
+ * @author Flor De Meulemeester
+ */
 public class Car extends Thing{
 
     /**
@@ -36,13 +40,13 @@ public class Car extends Thing{
     }
 
     /**
-     * As the car gets older the value of the car decreases so we override the getter.
+     * As the car gets older the value of the car decreases so we override the getter for the value.
      */
     @Override
     public int getValue(){
         LocalDate currentTime = LocalDate.now();
-        double half = this.value / 2;
-        double newValue = this.value - (getBuyDate().until(currentTime, ChronoUnit.YEARS)) * 0.5;
+        double half = (double) this.value / 2;
+        double newValue = this.value - (getBuyDate().until(currentTime, ChronoUnit.YEARS)) * 100;
         return (int) Math.max(newValue,half);
     }
 
