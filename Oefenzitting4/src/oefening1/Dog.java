@@ -1,3 +1,5 @@
+package oefening1;
+
 import be.kuleuven.cs.som.annotate.Basic;
 
 /**

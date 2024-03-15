@@ -1,5 +1,9 @@
+package oefening1;
+
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Raw;
+import oefening1.IllegalValueException;
+import oefening1.Person;
 
 /**
  * A more abstract class representing things that a person could own.

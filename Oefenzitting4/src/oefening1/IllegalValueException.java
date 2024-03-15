@@ -1,3 +1,5 @@
+package oefening1;
+
 /**
  * A class of exceptions.
  */

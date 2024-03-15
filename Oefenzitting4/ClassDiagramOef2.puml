@@ -1,43 +1,53 @@
 @startuml
 
 abstract StackOfCards{
-    + capacity: int
-    + stackOfCards: Stack<Cards>
+    + int capacity
+    + Stack<Cards> stackOfCards
 
-    + Stack(int maxCards)
+    + Stack(int capacity)
 
-    + fromMoveTo(StackOfCards stackOfCards): void
-    + add(Card card): void
-    + pop(): Card
-    + getCapacity(): int
-    + getSize(): int
-    + printAllCards(): List
+    + void fromMoveTo(StackOfCards stackOfCards)
+    + void add(Card card)
+    + Card pop()
+    + int getCapacity()
+    + int getSize()
+    - Card peek()
+    + List printAllCards()
 }
 
 class GoalStack{
-
-    + peek(): Card
+    ..Override..
+    + Card peek()
 }
 
 class HelpStack{
+
 }
 
 class SourceStack{
-
-    + peek(): Card
+    ..Override..
+    + Card peek()
 }
 
 'Cards are immutable
-class Cards{
+class Card{
     + {static} value: int
     + {static} kind: String
 
     + canPutCardOn(Card card): boolean
 }
 
+'Inheritance
 StackOfCards <|-- GoalStack
 StackOfCards <|-- SourceStack
 StackOfCards <|-- HelpStack
-StackOfCards "*" - "1" Cards
+
+'Bidirectional relation
+Card "1" - "*" StackOfCards
+HelpStack <-->  GoalStack
+
+'Unidirectional relation
+SourceStack --> GoalStack : if 1 higher or 1 lower
+
 
 @enduml
