@@ -1,7 +1,8 @@
 @startuml
 
 abstract StackOfCards{
-    + int capacity
+    + int capacity (hoeft niet met ArrayList)
+    + int length
     + Stack<Cards> stackOfCards
 
     + Stack(int capacity)
@@ -30,17 +31,29 @@ class SourceStack{
 }
 
 'Cards are immutable
-class Card{
+abstract Card{
     + {static} value: int
     + {static} kind: String
 
     + canPutCardOn(Card card): boolean
 }
 
+class Jack{
+}
+
+class NumberedCard{
+}
+
+class Joker{
+}
+
 'Inheritance
 StackOfCards <|-- GoalStack
 StackOfCards <|-- SourceStack
 StackOfCards <|-- HelpStack
+Card <|-- Jack
+Card <|-- Joker
+Card <|-- NumberedCard
 
 'Bidirectional relation
 Card "1" - "*" StackOfCards
