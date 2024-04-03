@@ -1,2 +1,2 @@
 # OGP
-Hier sla ik mijn oefeningen van OGP op.
+A place to save my exercises for Object Gericht Programmeren.
