@@ -14,7 +14,26 @@ enum EventCategory{
 +RECREATION
 }
 
+enum Transport{
++BIKE
++TRAIN
++CAR
+}
+
+class Agenda{
+- class DatedEvent
+}
+
+struct BasicDate
+
+class AdvancedDate
+
+interface ComparableDate
+
+EventCategory - Event : uses
 Event <|-- Lecture
 Event <|-- CityTrip
-
+ComparableDate <-- BasicDate : uses
+ComparableDate <-- AdvancedDate : uses
+Transport - CityTrip: uses
 @enduml
