@@ -1,4 +1,4 @@
-import be.kuleuven.cs.som.annotate.Basic;
+import be.kuleuven.cs.som.annotate.*;
 
 /**
  * A class CityTrip inheriting from Event, representing city trips.

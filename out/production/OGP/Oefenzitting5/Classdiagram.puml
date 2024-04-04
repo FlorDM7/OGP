@@ -1,0 +1,20 @@
+@startuml
+
+abstract Event{
+}
+
+class Lecture{
+}
+
+class CityTrip{
+}
+
+enum EventCategory{
++ACADEMIC
++RECREATION
+}
+
+Event <|-- Lecture
+Event <|-- CityTrip
+
+@enduml

@@ -1,4 +1,4 @@
-import be.kuleuven.cs.som.annotate.Basic;
+import be.kuleuven.cs.som.annotate.*;
 
 /**
  * An enum class containing the event categories.

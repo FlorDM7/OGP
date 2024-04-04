@@ -1,4 +1,4 @@
-import be.kuleuven.cs.som.annotate.Basic;
+import be.kuleuven.cs.som.annotate.*;
 
 /**
  * A class Lecture inheriting from Event, representing lectures.

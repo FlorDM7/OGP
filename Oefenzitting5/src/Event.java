@@ -1,5 +1,4 @@
 import be.kuleuven.cs.som.annotate.*;
-
 import java.util.List;
 
 /**
@@ -101,6 +100,7 @@ public abstract class Event {
     }
 
     public void sendNotification(){
+        // always gets overridden
     }
 
 }
