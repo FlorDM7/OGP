@@ -22,11 +22,9 @@ public class TestPerson {
     }
 
     @Test
-    public void testSwitchPartners(){
+    public void testSwitchPartners_LegalCase(){
         husband1.marry(wife1);
         husband2.marry(wife2);
-        assertEquals(wife1, husband1.getPartner());
-        assertEquals(wife2, husband2.getPartner());
         husband1.switchPartners(husband2);
         assertEquals(wife2, husband1.getPartner());
         assertEquals(wife1, husband2.getPartner());

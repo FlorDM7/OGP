@@ -10,17 +10,17 @@ public class Person {
     /**
      * The name of the person.
      */
-    public String name;
+    public String name = null;
 
     /**
      * The partner of the person.
      */
-    public Person partner;
+    public Person partner = null;
 
     /**
      * Variable to check if the person is terminated.
      */
-    public boolean isTerminated;
+    public boolean isTerminated = false;
 
     /**
      * Extended constructor requiring a name and a partner
@@ -115,10 +115,12 @@ public class Person {
      *          If it is not possible to divorce.
      */
     public void divorce() throws IllegalPartnerException {
-        if (!(canDivorce(this, this.getPartner()))) {
+        if (!(canDivorce(this, getPartner()))) {
             throw new IllegalPartnerException(this);
         } else {
-            getPartner().setPartner(null);
+            if (getPartner() != null) {
+                getPartner().setPartner(null);
+            }
             setPartner(null);
         }
     }
