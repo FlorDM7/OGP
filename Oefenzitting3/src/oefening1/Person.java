@@ -1,3 +1,5 @@
+package oefening1;
+
 import be.kuleuven.cs.som.annotate.*;
 
 /**
@@ -96,7 +98,7 @@ public class Person {
      * @post    The partner of the person is changed if and only if he doesn't have a partner already and
      *          the partner doesn't have another partner and if the person doesn't marry himself.
      *          | canMarry(person, partner)
-     * @throws  IllegalPartnerException
+     * @throws IllegalPartnerException
      *          If it is not possible to marry then an exception will be thrown.
      */
     public void marry(Person newPartner) throws IllegalPartnerException {

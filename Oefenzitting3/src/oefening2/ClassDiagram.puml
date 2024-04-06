@@ -1,0 +1,43 @@
+@startuml
+
+class Wallet{
++runningOrders: Array[Order]
++completedOrders: Array[Order]
++stocks: Set[Stock]
++owner: String
+
++checkIfAtLeastOneStockBought(String company): boolean
++areBeingBought(List<Order> orders): boolean
+}
+
+class Stock{
++orders: Array[Order]
++currentPrice: int
++companyName: String
+
++Stock(String companyName): void
++getCurrentPrice(): int
+}
+
+class Order{
++totalAmount: int
++remainingAmount: int
++maximumPrice: int
++isBought: boolean
++isResigned: boolean
++productName: String
++stock: Stock
+
++Order(int amount, int maximumPrice, Stock stock): void
++isBought(): boolean
++changeMaximumPrice(): void
++buy(int amount): void
++resign(): void
++isRunningOrder() : boolean
+}
+
+Wallet "1" -- "*" Stock
+Wallet "1" -- "*" Order
+Stock "1" -- "*" Order
+
+@enduml

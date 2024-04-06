@@ -1,8 +1,10 @@
+package oefening1;
+
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * A class to test the public methods of Person.
+ * A class to test the public methods of oefening1.Person.
  *
  * @author Flor De Meulemeester
  * @version 1.0
@@ -26,8 +28,8 @@ public class TestPerson {
         husband1.marry(wife1);
         husband2.marry(wife2);
         husband1.switchPartners(husband2);
-        assertEquals(wife2, husband1.getPartner());
-        assertEquals(wife1, husband2.getPartner());
+        Assertions.assertEquals(wife2, husband1.getPartner());
+        Assertions.assertEquals(wife1, husband2.getPartner());
     }
 
     @Test

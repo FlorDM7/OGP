@@ -1,5 +1,8 @@
+package oefening1;
+
 /**
  * A class of exceptions.
+ * @author Flor De Meulemeester
  */
 public class IllegalPartnerException extends RuntimeException {
 
