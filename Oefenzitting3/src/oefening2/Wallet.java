@@ -1,6 +1,5 @@
 package oefening2;
-import be.kuleuven.cs.som.annotate.Basic;
-
+import be.kuleuven.cs.som.annotate.*;
 import java.util.*;
 
 /**
