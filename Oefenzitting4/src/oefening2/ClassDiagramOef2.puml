@@ -1,11 +1,12 @@
 @startuml
 
-abstract StackOfCards{
-    + int capacity (hoeft niet met ArrayList)
-    + int length
+abstract StackOfCards {
+    + int capacity
+    + int size
     + Stack<Cards> stackOfCards
 
-    + Stack(int capacity)
+    + StackOfCards(int capacity)
+
 
     + void fromMoveTo(StackOfCards stackOfCards)
     + void add(Card card)
@@ -16,35 +17,43 @@ abstract StackOfCards{
     + List printAllCards()
 }
 
-class GoalStack{
+class GoalStack {
     ..Override..
     + Card peek()
 }
 
-class HelpStack{
+class HelpStack {
 
 }
 
-class SourceStack{
+class SourceStack {
     ..Override..
     + Card peek()
 }
 
 'Cards are immutable
-abstract Card{
+abstract Card {
     + {static} value: int
-    + {static} kind: String
+    + {static} kind: Type
 
     + canPutCardOn(Card card): boolean
 }
 
-class Jack{
+enum Type {
+hearts
+clubs
+diamonds
+spades
+joker
 }
 
-class NumberedCard{
+class Jack {
 }
 
-class Joker{
+class NumberedCard {
+}
+
+class Joker {
 }
 
 'Inheritance
@@ -62,5 +71,6 @@ HelpStack <-->  GoalStack
 'Unidirectional relation
 SourceStack --> GoalStack : if 1 higher or 1 lower
 
+Type - Card
 
 @enduml

@@ -1,8 +1,5 @@
 package oefening1;
 
-import oefening1.Dog;
-import oefening1.Painting;
-import oefening1.Person;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
