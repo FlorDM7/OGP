@@ -9,4 +9,8 @@ public class Jack extends Card {
         super(11, kind);
     }
 
+    @Override
+    public String toString() {
+        return "Jack of " + getKind();
+    }
 }

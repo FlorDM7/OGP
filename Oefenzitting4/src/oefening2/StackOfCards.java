@@ -1,6 +1,8 @@
 package oefening2;
 
 import be.kuleuven.cs.som.annotate.Basic;
+import be.kuleuven.cs.som.annotate.Immutable;
+import be.kuleuven.cs.som.annotate.Model;
 
 import java.util.ArrayList;
 import java.util.Stack;
@@ -17,26 +19,38 @@ abstract public class StackOfCards {
 
     private final int capacity;
 
-    private int size = 0;
+    private int size;
 
-    private Stack<Card> stack = new Stack<Card>();
+    private Stack<Card> stack;
 
-    private StackOfCards(int capacity) {
+    public StackOfCards(int capacity, int size, Stack<Card> stack) {
         if (!isValidCapacity(capacity)) {
             throw new IllegalArgumentException("The capacity is invalid!");
         }
         this.capacity = capacity;
+        setSize(size);
+        setStack(stack);
     }
 
+    public StackOfCards(int capacity, int size) {
+        this(capacity, size, new Stack<Card>());
+    }
+
+    public StackOfCards(int capacity) {
+        this(capacity, 0, new Stack<Card>());
+    }
+
+    @Model
     public boolean isValidCapacity(int capacity) {
         return capacity > 0;
     }
 
-    @Basic
+    @Basic @Immutable
     public int getCapacity() {
         return capacity;
     }
 
+    @Model
     public boolean isValidSize(int size) {
         return size >= 0 && getCapacity() >= size;
     }
@@ -58,22 +72,37 @@ abstract public class StackOfCards {
         this.stack = stack;
     }
 
-    public void add(Card card) {
+    protected void add(Card card) {
         if (!isFull()) {
+            setSize(getSize() + 1);
             stack.add(card);
         }
     }
 
-    public Card pop() {
-        return stack.pop();
+    protected Card pop() {
+        if (!isEmpty()) {
+            setSize(getSize() - 1);
+            return stack.pop();
+        }
+        return null;
     }
 
     protected Card peek() {
-        return stack.peek();
+        if (!isEmpty()){
+            return stack.peek();
+        }
+        return null;
     }
 
     public ArrayList<Card> getAllCards() {
         return new ArrayList<>(stack);
+    }
+
+    public void printAllCards() {
+        ArrayList<Card> list = getAllCards();
+        for (Card card : list) {
+            System.out.println(card.toString());
+        }
     }
 
     public void fromMoveTo(StackOfCards other) {
@@ -82,15 +111,20 @@ abstract public class StackOfCards {
         }
         Card card1 = peek();
         Card card2 = other.peek();
-        if (!card1.canPutCardOn(card2)) {
+        if (card1 == null || !card1.canPutCardOn(card2)) {
             throw new RuntimeException("Cards cannot be on each other.");
         } else {
-
+            Card card = pop();
+            other.add(card);
         }
     }
 
     public boolean isFull() {
         return getCapacity() == getSize();
+    }
+
+    public boolean isEmpty() {
+        return getSize() == 0;
     }
 
 }

@@ -1,7 +1,7 @@
 package oefening2;
 
 import be.kuleuven.cs.som.annotate.Basic;
-import oefening1.IllegalValueException;
+import be.kuleuven.cs.som.annotate.Immutable;
 
 /**
  * A class representing cards.
@@ -44,7 +44,7 @@ abstract public class Card {
     /**
      * Get the kind of the card.
      */
-    @Basic
+    @Basic @Immutable
     public Type getKind() {
         return kind;
     }
@@ -52,7 +52,7 @@ abstract public class Card {
     /**
      * Get the numeric value of the card.
      */
-    @Basic
+    @Basic @Immutable
     public int getValue() {
         return value;
     }
@@ -70,11 +70,20 @@ abstract public class Card {
     }
 
     public boolean canPutCardOn(Card other) {
+        if (other == null) {
+            return false;
+        }
         if (this instanceof Joker || other instanceof Joker) {
             return true;
         }
         if (getValue() == other.getValue()){
             return false;
-        } else return getValue() + 1 == other.getValue() || getValue() == other.getValue() + 1;
+        } else {
+            return getValue() + 1 == other.getValue() || getValue() == other.getValue() + 1;
+        }
+    }
+
+    public String toString() {
+        return getValue() + " of " + getKind();
     }
 }

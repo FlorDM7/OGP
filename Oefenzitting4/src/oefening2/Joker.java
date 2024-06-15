@@ -6,4 +6,8 @@ public class Joker extends Card {
         super(0, null);
     }
 
+    @Override
+    public String toString() {
+        return "Joker";
+    }
 }
